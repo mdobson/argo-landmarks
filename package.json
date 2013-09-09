@@ -1,0 +1,16 @@
+{
+  "name": "argo-res-api",
+  "version": "0.0.0",
+  "description": "Simple example of resource based Argo API",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "mdobs",
+  "license": "BSD",
+  "dependencies": {
+    "argo-url-router": "0.0.0",
+    "argo-resource": "0.0.0",
+    "argo": "~0.4.0-alpha"
+  }
+}
