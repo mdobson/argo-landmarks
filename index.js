@@ -3,11 +3,13 @@ var argo = require('argo'),
     router = require('argo-url-router');
 
 var Landmarks = require('./landmark');
+var Checkins = require('./checkin');
 var key = "1d6fed5814a63657";
 
 argo()
   .use(router)
   .use(resource.of(Landmarks))
+  .use(resource.of(Checkins))
   .map('^/forecast', function(server){
     server
       .use(function(handle){
