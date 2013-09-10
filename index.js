@@ -18,10 +18,6 @@ argo()
           env.request.url = subbedUrl;
           next(env);
         });
-        handle("response", function(env, next) {
-          console.log(env.target.url);
-          next(env);
-        })
        })
       .target("http://api.wunderground.com/api/"+key+"/conditions/q");
   })
