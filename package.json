@@ -11,6 +11,7 @@
   "dependencies": {
     "argo-url-router": "0.0.0",
     "argo-resource": "0.0.0",
-    "argo": "~0.4.0-alpha"
+    "argo": "~0.4.0-alpha",
+    "nano": "~4.1.3"
   }
 }
