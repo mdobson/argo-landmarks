@@ -4,6 +4,7 @@ var argo = require('argo'),
 
 var Landmarks = require('./landmark');
 var Checkins = require('./checkin');
+var Forecast = require('./forecast');
 var key = "1d6fed5814a63657";
 
 argo()
@@ -12,15 +13,7 @@ argo()
   .use(resource.of(Checkins))
   .map('^/forecast', function(server){
     server
-      .use(function(handle){
-        handle("request", function(env, next) {
-          var reqUrl = env.request.url;
-          var needle = "/forecast";
-          var subbedUrl = reqUrl.substr(needle.length, reqUrl.length - needle.length);
-          env.request.url = subbedUrl;
-          next(env);
-        });
-       })
+      .use(Forecast)
       .target("http://api.wunderground.com/api/"+key+"/conditions/q");
   })
   .listen(process.env.PORT || 8000);

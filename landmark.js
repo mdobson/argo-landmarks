@@ -26,7 +26,7 @@ Landmarks.prototype.init = function(config) {
 };
 
 Landmarks.prototype.list = function(env, next) {
-  env.response.body = this.landmarks;
+  env.response.body = {"meta":{"status":"success"}, "data":this.landmarks};
   next(env);
 };
 
@@ -35,7 +35,7 @@ Landmarks.prototype.show = function(env, next) {
 
   landmarksDb.get(key, function(err, body) {
     if(!err) {
-      env.response.body = body;
+      env.response.body = {"meta":{"status":"success"}, "data":body};;
       next(env);
     }
   });
