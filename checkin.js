@@ -26,7 +26,6 @@ Checkins.prototype.init = function(config) {
   config
     .path('/checkins')
     .get(this.list)
-    .post(this.checkin)
     .get('/{id}',this.show)
     .bind(this);
 };
@@ -36,38 +35,10 @@ Checkins.prototype.list = function(env, next) {
   next(env);
 };
 
-Checkins.prototype.checkin = function(env, next) {
-  var self = this;
-  env.request.getBody(function(err, body) {
-    if(err) {
-      env.response.statusCode = 500;
-      env.response.body = {"meta":{"status":"error", "error":err}};
-      next(env);
-    } else {
-      var reqBody = JSON.parse(body.toString());
-      var entity = {
-        "type":"checkins",
-        "landmark_name":reqBody.landmark_name,
-        "location":reqBody.location
-      };
-      client.createEntity(entity, function(error, response) {
-        if(error) {
-          env.response.statusCode = 500;
-          env.response.body = {"meta":{"result":"error", "error":response}};
-          next(env);
-        } else {
-          env.response.body = {"meta":{"result":"success"}, "data":response};
-          next(env);
-        }
-      });
-    }
-  });
-};
-
 Checkins.prototype.show = function(env, next) {
   client.getEntity(env.request.params.id, function(error, response) {
     if(error) {
-      env.response.statusCode = 500;
+      env.response.statusCode = 400;
       env.response.body = { "meta":{"status":"error", "error":response}};
       next(env);
     } else {

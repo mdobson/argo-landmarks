@@ -57,7 +57,7 @@ Landmarks.prototype.insert = function(env, next) {
     }
     landmarksDb.insert(postBody, name, function(error, result) {
       if(error){
-        env.response.statusCode = 500;
+        env.response.statusCode = 400;
         env.response.body = { "meta":{"status":"error", "result":error}};
       } else {
         env.response.body = { "meta":{"status":"success"}, "data":result};
