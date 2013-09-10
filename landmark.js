@@ -21,6 +21,7 @@ Landmarks.prototype.init = function(config) {
     .path('/landmarks')
     .get(this.list)
     .get('/{id}', this.show)
+    .post(this.insert)
     .bind(this);
 };
 
@@ -37,5 +38,26 @@ Landmarks.prototype.show = function(env, next) {
       env.response.body = body;
       next(env);
     }
+  });
+};
+
+Landmarks.prototype.insert = function(env, next) {
+  var self = this;
+  env.request.getBody(function(err, body){
+    var postBody = JSON.parse(body.toString());
+    var name = null;
+    if(!postBody.name) {
+      name = postBody.landmark_name;
+    } else {
+      name = postBody.name;
+    }
+    landmarksDb.insert(postBody, name, function(error, result) {
+      if(error){
+        env.response.statusCode = 500;
+        env.response.body = { "meta":{"status":"error", "result":error}};
+      } else {
+        env.response.body = { "meta":{"status":"success"}, "data":result};
+      }
+    });
   });
 }
