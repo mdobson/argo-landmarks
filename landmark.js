@@ -10,7 +10,11 @@ var Landmarks = module.exports = function(landmarks) {
   landmarksDb.list(function(error, result) {
     if(!error) {
       result.rows.forEach(function(landmark) {
-        self.landmarks.push(landmark);
+        landmarksDb.get(landmark.key, function(err, body) {
+          if(!err) {
+            self.landmarks.push(body);
+          }
+        });
       });
     }
   });
