@@ -1,11 +1,25 @@
-module.exports = function(handle){
+var Forecast = module.exports = function(proxyUrl) {
+	var key = "1d6fed5814a63657";
+	this.proxyUrl = proxyUrl || "http://api.wunderground.com/api/"+key+"/conditions/q";
+}
+
+Forecast.prototype.init = function(config) {
+	config
+		.path('/forecast/{state}/{city}.json')
+		.get(this.forecast)
+		.bind(this);
+}
+
+Forecast.prototype.forecast = function(handle) {
+	var self = this;
 	handle("request", function(env, next) {
 		var reqUrl = env.request.url;
 		var needle = "/forecast";
 		var subbedUrl = reqUrl.substr(needle.length, reqUrl.length - needle.length);
-		env.request.url = subbedUrl;
+		env.target.url = self.proxyUrl + subbedUrl;
 		next(env);
 	});
+
 	handle("response", function(env, next){
 		env.target.response.getBody(function(error, response){
 			if(error) {
