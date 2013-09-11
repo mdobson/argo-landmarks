@@ -2,6 +2,8 @@
         {
             "type":"landmark",
             "landmark_name":"Statue of Liberty",
+            "within_us":true,
+            "wunderground_modifier":"NY",
             "city":"New York City",
             "category":"statue",
             "fact":"A gift to the United States from the people of France.",
@@ -13,6 +15,8 @@
         {
             "type":"landmark",
             "landmark_name":"Golden Gate Bridge",
+            "within_us":true,
+            "wunderground_modifier":"CA",
             "city":"San Francisco",
             "category":"bridge",
             "fact":"There are approximately 600,000 rivets in each tower.",
@@ -24,6 +28,8 @@
         {
             "type":"landmark",
             "landmark_name":"Spirit of Detroit",
+            "within_us":true,
+            "wunderground_modifier":"MI",
             "city":"Detroit",
             "category":"statue",
             "fact":"It was commissioned in 1955 for a cost of $58,000.",
@@ -35,6 +41,8 @@
         {
             "type":"landmark",
             "landmark_name":"Ambassador Bridge",
+            "within_us":true,
+            "wunderground_modifier":"MI",
             "city":"Detroit",
             "category":"bridge",
             "fact":"The bridge carries approximately 25% of trade between Canada and the United States.",
@@ -46,6 +54,8 @@
         {
             "type":"landmark",
             "landmark_name":"Renaissance Center",
+            "within_us":true,
+            "wunderground_modifier":"MI",
             "city":"Detroit",
             "category":"skyscraper",
             "fact":"The first tower of the Renaissance Center opened on July 1, 1976.",
@@ -57,6 +67,8 @@
         {
             "type":"landmark",
             "landmark_name":"Mount Rushmore",
+            "within_us":true,
+            "wunderground_modifier":"SD",
             "city":"Keystone",
             "category":"statue",
             "fact":"The memorial was iconically used as the location of the climactic chase scene in Alfred Hitchcock's 1959 movie North by Northwest.",
@@ -68,7 +80,9 @@
 	{
 	    "type":"landmark",
 	    "landmark_name":"CN Tower",
+        "within_us":false,
 	    "city":"Toronto",
+        "wunderground_modifier":"Canada",
 	    "category":"skyscraper",
 	    "fact":"The idea of the CN Tower originated in 1968 when the Canadian National Railway had a desire to build a large TV and radio communication platform to serve the Toronto area.",
 	    "location":{
@@ -79,6 +93,8 @@
 	{
 	    "type":"landmark",
 	    "landmark_name":"Casa Loma",
+        "within_us":false,
+        "wunderground_modifier":"Canada",
 	    "city":"Toronto",
 	    "category":"residence",
 	    "fact":"It was originally a residence for financier Sir Henry Mill Pellatt.",

@@ -46,7 +46,6 @@ User.prototype.signup = function(env, next) {
 
 User.prototype.user = function(env, next) {
 	var token = env.router.query.access_token;
-	console.log(token);
 	client.setToken(token);
 	client.authType = "APP_USER";
 	client.getLoggedInUser(function(error, data, user){
