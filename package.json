@@ -9,10 +9,10 @@
   "author": "mdobs",
   "license": "BSD",
   "dependencies": {
-    "argo-url-router": "0.0.0",
-    "argo-resource": "0.0.1",
-    "argo": "~0.4.0-alpha",
     "nano": "~4.1.3",
-    "usergrid": "~0.10.5"
+    "usergrid": "~0.10.5",
+    "argo": "~0.4.0-alpha.3",
+    "argo-url-router": "0.0.3",
+    "argo-resource": "0.0.3"
   }
 }

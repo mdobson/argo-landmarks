@@ -28,7 +28,7 @@ var Checkins = module.exports = function(checkins) {
 //*path()* is used to set the overall endpoint of the resource
 //  Http method functions can take an additional path 
 //  that will be added to the end of the overall path.
-//
+
 Checkins.prototype.init = function(config) {
   config
     .path('/checkins')

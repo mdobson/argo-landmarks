@@ -14,7 +14,8 @@ User.prototype.init = function(config) {
 		.get('/signin', this.signin)
 		.post('/checkin', this.checkin)
 		.get('/checkins/me', this.checkins)
-		.get('/me',this.user);
+		.get('/me',this.user)
+		.bind(this);
 };
 
 User.prototype.signup = function(env, next) {
@@ -45,7 +46,7 @@ User.prototype.signup = function(env, next) {
 };
 
 User.prototype.user = function(env, next) {
-	var token = env.router.query.access_token;
+	var token = env.route.query.access_token;
 	client.setToken(token);
 	client.authType = "APP_USER";
 	client.getLoggedInUser(function(error, data, user){
@@ -61,8 +62,8 @@ User.prototype.user = function(env, next) {
 };
 
 User.prototype.signin = function(env, next) {
- 	var username = env.router.query.username;
-	var password = env.router.query.password;
+ 	var username = env.route.query.username;
+	var password = env.route.query.password;
 	var name = "";
 
 	client.login(username, password, function(error, result){
@@ -79,7 +80,7 @@ User.prototype.signin = function(env, next) {
 
 User.prototype.checkins = function(env, next) {
 	var self = this;
-	var token = env.router.query.access_token;
+	var token = env.route.query.access_token;
 	client.setToken(token);
 	client.authType = "APP_USER";
 	client.getLoggedInUser(function(err, data, user){
@@ -104,7 +105,7 @@ User.prototype.checkins = function(env, next) {
 
 User.prototype.checkin = function(env, next) {
 	var self = this;
-	var token = env.router.query.access_token;
+	var token = env.route.query.access_token;
 	client.setToken(token);
 	client.authType = "APP_USER";
 	var checkins = new ug.collection({"client":client, "type":"checkins"});
